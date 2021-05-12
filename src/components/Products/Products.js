@@ -1,5 +1,6 @@
 import React from 'react';
-
+import styled from 'styled-components';
+import { ProductCard } from './ProductCard'
 
 
 class Home extends React.Component {
@@ -13,4 +14,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home
+export default Products;
