@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import {CartItem} from './CartItem'
+
 
 const CartContainer = styled.div`
   border: 1px solid;
@@ -10,9 +12,10 @@ const ListContainer = styled.div`
   display: grid;
   gap: 8px;
 `
+const ItemContainer = styled.div`
+`
 
-
-export class ShoppingCart extends React.Component {
+export class ShoppCart extends React.Component {
     TotalValue = () => {
       let totalValue = 0 //O valor deve ser 0 no campo do valor total
   
@@ -26,10 +29,10 @@ export class ShoppingCart extends React.Component {
       return <CartContainer>
         <h3>Carrinho:</h3>
         <ListContainer>
-          {this.props.prder.map(() => { // vai mapear uma const que se encontra em home ??
+          {this.props.myCart.map((product) => { // vai mapear uma const que se encontra em home??
             return <CartItem 
                       cartItem={} 
-                      ={this.props.}
+                      removeFromCart ={this.props.removeFromCart}// recebe a funcao de App.js 
                     />
           })}
         </ListContainer>
@@ -39,3 +42,4 @@ export class ShoppingCart extends React.Component {
     }
   }
   
+  export default Cart;

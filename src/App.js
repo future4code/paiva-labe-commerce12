@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import './App.css'
-import Home from "./components/Home"
+import {Filters} from "./components/Filters/Filter"
+import {Products} from './components/Products/Products';
+import {ShoppCart} from './components/ShoppCart/Cart';
+
 
 
 class App extends React.Component {
@@ -63,4 +65,4 @@ class App extends React.Component {
   }
 }
 
-export default App
+export default App;
