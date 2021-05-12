@@ -1,7 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
 
 
 
+class Home extends React.Component {
 
-export default Default;
+    render() {
+        return (
+            <div>
+                <h1>HOME</h1>
+            </div>
+        )
+    }
+}
+
+export default Home
