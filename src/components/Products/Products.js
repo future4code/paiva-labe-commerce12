@@ -3,14 +3,20 @@ import styled from 'styled-components';
 import { ProductCard } from './ProductCard'
 
 
-class Home extends React.Component {
+class Products extends React.Component {
 
     render() {
-        return (
-            <div>
-                <h1>HOME</h1>
+        const productList = this.props.products
+        return(<div>
+            {productList.map((product) => {
+                return <ProductCard
+                  product={product}
+                  onAddProductToCart={this.props.onAddProductToCart}
+                />
+              })}
             </div>
         )
+
     }
 }
 
