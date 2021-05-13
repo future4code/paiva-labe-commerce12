@@ -16,7 +16,7 @@ class Products extends React.Component {
             {productList.map((product) => {
                 return <ProductCard
                   product={product}
-                  onAddProductToCart={this.props.onAddProductToCart}
+                  addToCart={this.props.addToCart}
                 />
             })}
             </ProductDisplay>

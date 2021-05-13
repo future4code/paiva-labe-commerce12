@@ -43,7 +43,6 @@ const ProductPrice = styled.p`
 export class ProductCard extends React.Component {
     render() {
       const product = this.props.product
-      console.log(product)
       return(
         <BlockStock>
           <ImageStock src={product.image}/>
@@ -51,7 +50,7 @@ export class ProductCard extends React.Component {
             <ProductName>{product.name}</ProductName>
             <ProductPrice>R${product.price},00</ProductPrice>
           </ProductText>
-          <ButtonAdd onClick={() =>this.props.addToCart}>Adicionar</ButtonAdd>
+          <ButtonAdd onClick={() =>this.props.addToCart(product.id)}>Adicionar</ButtonAdd>
         </BlockStock>
       )
     }
