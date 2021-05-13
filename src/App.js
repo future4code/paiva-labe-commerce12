@@ -4,7 +4,7 @@ import './App.css'
 import Products from './components/Products/Products'
 import Cart from './components/ShoppCart/Cart'
 import img from './astronauta.jpg'
-
+import Filter from './components/Filters/Filter'
 
 
 
@@ -16,9 +16,14 @@ const AppContainer = styled.div`
 `
 
 const DisplayApp = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 10% repeat(3, 1fr);
+  display: flex;
+  flex-direction: column;
+`
+
+const Stock = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: auto;
 `
 
 const NavBar = styled.div`
@@ -32,44 +37,44 @@ const NavBar = styled.div`
   text-shadow: 1px 5px 5px black;
 `
 
-const products = [
-  {
-    id: Math.random(),
-    name: "Uniforme Cyberpunk",
-    price: 8600,
-    image: "https://mega.ibxk.com.br/2015/03/13/13142708050663.jpg",
-    quantity: 0
-
-  },
-  {
-    id: Math.random(),
-    name: "Confort 101",
-    price: 9000,
-    image: "https://www.inovacaotecnologica.com.br/noticias/imagens/010130190521-roupa-espacial-para-marte-1.jpg",
-    quantity: 0
-  },
-  {
-    id: Math.random(),
-    name: "OITNB",
-    price: 7300,
-    image: "https://i.pinimg.com/736x/d9/45/21/d94521ee32233b8ad3a3befe7d85242a.jpg",
-    quantity: 2
-  },
-  {
-    id: Math.random(),
-    name: "Safety first",
-    price: 5600,
-    image: "https://w7.pngwing.com/pngs/205/871/png-transparent-person-wearing-astronaut-attire-astronaut-space-suit-extravehicular-activity-outer-space-health-astronaut-disease-space-weightlessness.png",
-    quantity: 1
-  }
-]
-
 class App extends React.Component {
   state = {
+    products :[
+      {
+        id: Math.random(),
+        name: "Uniforme Cyberpunk",
+        price: 5600,
+        image: "https://mega.ibxk.com.br/2015/03/13/13142708050663.jpg",
+        quantity: 0
+    
+      },
+      {
+        id: Math.random(),
+        name: "Confort 101",
+        price: 7000,
+        image: "https://www.inovacaotecnologica.com.br/noticias/imagens/010130190521-roupa-espacial-para-marte-1.jpg",
+        quantity: 0
+      },
+      {
+        id: Math.random(),
+        name: "OITNB",
+        price: 8300,
+        image: "https://i.pinimg.com/736x/d9/45/21/d94521ee32233b8ad3a3befe7d85242a.jpg",
+        quantity: 2
+      },
+      {
+        id: Math.random(),
+        name: "Safety first",
+        price: 9600,
+        image: "https://w7.pngwing.com/pngs/205/871/png-transparent-person-wearing-astronaut-attire-astronaut-space-suit-extravehicular-activity-outer-space-health-astronaut-disease-space-weightlessness.png",
+        quantity: 1
+      }
+    ],
+
     myCart: [],
-    lowerFilter: 0,
-    higherFilter: Infinity,
-    order: "Nehnuma",
+    filterMin: 0,
+    filterMax: Infinity,
+    order: "increasing",
     search: ""
   }
   //www.youtube.com/watch?v=FIiSRlyQf0c
@@ -109,17 +114,64 @@ class App extends React.Component {
     })
     //this.setState({ tarefas: novaListaTarefas });
   }
+  onChangeFilterMin=(event)=>{
+    this.setState({filterMin: event.target.value})
+  }
+  
+  onChangeFilterMax=(event)=>{
+    this.setState({filterMax: event.target.value})
+  }
+
+  onChangeFilterSearch=(event)=>{
+    this.setState({search: event.target.value})
+  }
+
+  onChangeOrder=(event)=>{
+    this.setState({order: event.target.value})
+  }
+
   render() {
+    const filter = this.state.products.filter((item) => {
+      if (((item.price >= this.state.filterMin || this.state.filterMin === '') &&
+        (item.price <= this.state.filterMax || this.state.filterMax === '') &&
+        (item.name.toLowerCase().includes(this.state.search.toLowerCase()) || this.state.search === ''))) {
+        return true
+      } else {
+        return false
+      }
+    })
+
+    if (this.state.order === 'decreasing') {
+      filter.reverse()
+    }
+
+    const filterProducts = filter.map((item) => {
+
+      return (
+        <Products
+          image={item.image}
+          name={item.name}
+          price={item.price}
+          addToCart={() => this.addToCart(item.id)} />
+      )
+    })
     return (
       <AppContainer>
         <DisplayApp>
           <NavBar>
-            <h1>Nav</h1>
+            <Filter
+            maxPrice={this.state.filterMax}
+            minPrice={this.state.filterMin}
+            findProduct={this.state.search}
+            onChangeFilterMax={this.onChangeFilterMax}
+            onChangeFilterMin={this.onChangeFilterMin}
+            onChangeFilterSearch={this.onChangeFilterSearch}
+            onChangeOrder={this.onChangeOrder}
+            />
           </NavBar>
-          <Products
-            products={products}
-            myCart={this.myCart}
-          />
+          <Stock>
+            {filterProducts}
+            </Stock>
         </DisplayApp>
         <Cart
           myCart={this.state.myCart}
