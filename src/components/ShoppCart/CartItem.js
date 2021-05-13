@@ -4,8 +4,14 @@ import styled from 'styled-components';
 const ContainerItems = styled.div`
   display: grid;
   grid-auto-flow: column;
-  align-items: left;
+  gap: 4px;
+  align-items: center;
+
+  p {
+    margin: 0;
+  }
 `
+
   export class CartItem extends React.Component {
     render() {
       return <ContainerItems>
