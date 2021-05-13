@@ -5,14 +5,15 @@ const BlockStock = styled.div `
   border: 1px solid black;
   border-radius: 10px;
   margin: 40px;
+  padding: 20px;
 `
 
 const ImageStock = styled.img`
   border-radius: 10px;
-  min-width: 200px;
-  max-width:200px;
-  min-height: 300px;
-  max-height:300px;
+  min-width: 120px;
+  max-width: 120px;
+  min-height: 200px;
+  max-height: 200px;
 `
 
 const ButtonAdd = styled.button `
@@ -24,7 +25,7 @@ const ButtonAdd = styled.button `
   border-style: none;
   border-radius: 10px;
     :hover {
-    background: purple;
+    background: #133440;
     } 
 `
 const ProductText = styled.div`
