@@ -50,14 +50,14 @@ const products = [
     name: "OITNB",
     price: 7300,
     image: "https://i.pinimg.com/736x/d9/45/21/d94521ee32233b8ad3a3befe7d85242a.jpg",
-    quantity: 0
+    quantity: 2
   },
   {
     id: Math.random(),
     name: "Safety first",
     price: 5600,
     image: "https://w7.pngwing.com/pngs/205/871/png-transparent-person-wearing-astronaut-attire-astronaut-space-suit-extravehicular-activity-outer-space-health-astronaut-disease-space-weightlessness.png",
-    quantity: 0
+    quantity: 1
   }
 ]
 
@@ -69,24 +69,31 @@ class App extends React.Component {
     order: "Nehnuma",
     search: ""
   }
- //https://vimeo.com/410838254/6ea0a53200
- //https://www.youtube.com/watch?v=liVSP7p47xI
+  //www.youtube.com/watch?v=FIiSRlyQf0c
+  //https://vimeo.com/410838254/6ea0a53200
+  //https://www.youtube.com/watch?v=liVSP7p47xI
+  //stackoverflow.com/questions/63471379/got-a-parsing-error-while-assign-a-value-on-my-state
   addToCart = (idProduct) => {
-
-    const addToCart = this.state.products.filter((product) => {
-      if (product.id === idProduct) {
-        return {
-          ...product,
-          quantity: product.quantity + 1
+    const cart = this.state.cart.findIndex(
+      product => idProduct === product.id
+    );
+    if (cart >= 0) {
+      const addToCart = this.state.products.filter((product) => {
+        if (product.id === idProduct) {
+          return {
+            ...product,
+            quantity: product.quantity + 1
+          }
         }
-      }
-      return product
-    })
-    //this.setState({ tarefas: novaListaTarefas });
+        return product
+      })
+      this.setState({ cart: addToCart }); // update o cart com o que foi add. no addToCart
+    }else{
+
+    } 
 
 
-    const cart = [...this.state.myCart, addToCart]
-    this.setState({ myCart: cart })
+
   }
 
   removeFromCart = (idProduct) => {
