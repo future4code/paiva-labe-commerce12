@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import './App.css'
 import Products from './components/Products/Products'
 import Cart from './components/ShoppCart/Cart'
+import img from './astronauta.jpg'
 
 
 
@@ -24,7 +25,9 @@ const NavBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: purple;
+  background-image: url(${img});
+  width: 100%;
+  height: 200px;
   color: white;
   text-shadow: 1px 5px 5px black;
 `

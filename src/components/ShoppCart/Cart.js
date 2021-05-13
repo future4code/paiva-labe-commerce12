@@ -5,6 +5,8 @@ import {CartItem} from './CartItem'
 
 const CartContainer = styled.div`
   border: 1px solid;
+  padding: 10px;
+  margin: 10px;
   
 `
 
