@@ -77,11 +77,11 @@ class App extends React.Component {
   //https://www.youtube.com/watch?v=liVSP7p47xI
   //stackoverflow.com/questions/63471379/got-a-parsing-error-while-assign-a-value-on-my-state
   addToCart = (idProduct) => {
-    const cart = this.state.cart.findIndex(
+    const cart = this.state.myCart.findIndex(
       product => idProduct === product.id
     );
     if (cart >= 0) {
-      const addToCart = this.state.products.filter((product) => {
+      const newInCart = this.state.product.filter((product) => {
         if (product.id === idProduct) {
           return {
             ...product,
@@ -90,13 +90,11 @@ class App extends React.Component {
         }
         return product
       })
-      this.setState({ cart: addToCart }); // update o cart com o que foi add. no addToCart
-    }else{
-
+     // this.setState({ myCart: newInCart }); // update o cart com o que foi add. no addToCart
+    //}else{
+  
+      //this.setState({myCart: newInCart)
     } 
-
-
-
   }
 
   removeFromCart = (idProduct) => {
@@ -120,7 +118,7 @@ class App extends React.Component {
           </NavBar>
           <Products
             products={products}
-            addToCart={this.addToCart}
+            myCart={this.myCart}
           />
         </DisplayApp>
         <Cart
