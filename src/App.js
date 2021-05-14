@@ -86,7 +86,6 @@ class App extends React.Component {
   }
 
   addToCart = (idProduct) => {
-    console.log(idProduct)
     const addToCart = [...this.state.myCart]
     let i
     for(i =0; i <addToCart.length; i++){
@@ -107,7 +106,6 @@ class App extends React.Component {
   }
 
   removeFromCart = (idProduct) => {
-    console.log(idProduct)
     const removeCart = [...this.state.myCart]
     const productId = removeCart.findIndex((item)=>{
       return item.id === idProduct
