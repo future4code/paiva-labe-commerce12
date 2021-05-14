@@ -54,7 +54,7 @@ function Products(props) {
           <ProductName>{props.name}</ProductName>
           <ProductPrice>R${props.price},00</ProductPrice>
         </ProductText>
-        <ButtonAdd onClick={() =>this.props.addToCart(props.id)}>Adicionar</ButtonAdd>
+        <ButtonAdd onClick={() =>this.props.addToCart(props)}>Adicionar</ButtonAdd>
       </BlockStock>
     )
   }

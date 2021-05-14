@@ -76,7 +76,8 @@ class App extends React.Component {
         id: 1,
         name: "Uniforme Cyberpunk",
         price: 5600,
-        image: "https://mega.ibxk.com.br/2015/03/13/13142708050663.jpg"
+        image: "https://mega.ibxk.com.br/2015/03/13/13142708050663.jpg",
+        quantity:1
          }        
       ]
     }                       
@@ -87,7 +88,7 @@ class App extends React.Component {
   //stackoverflow.com/questions/63471379/got-a-parsing-error-while-assign-a-value-on-my-state
   
   addToCart = (product) => {
-    const existProductIndex = this.state.cart.findIndex(p => p.id === product.id);
+    const existProductIndex = this.state.cart.findIndex(product => productId === product.id);
   
     if (existProductIndex > 0) {
 
@@ -118,8 +119,8 @@ class App extends React.Component {
 
  
  removeFromCart = (idProduct) => {
-    const addToCart = this.state.products.filter((product) => {
-      if (product.id === idProduct) {
+    const addToCart = products.filter((product) => {
+      if (productId === product.id) {
         return {
           ...product,
           quantity: product.quantity - 1
@@ -146,7 +147,7 @@ class App extends React.Component {
   }
 
   render() {
-   const filter_ = this.state.products.filter((item) => {
+   const filter= products.filter((item) => {
       if (((item.price >= this.state.filterMin || this.state.filterMin === '') &&
         (item.price <= this.state.filterMax || this.state.filterMax === '') &&
         (item.name.toLowerCase().includes(this.state.search.toLowerCase()) || this.state.search === ''))) {
@@ -157,17 +158,17 @@ class App extends React.Component {
     })
 
     if (this.state.order === 'decreasing') {
-      filter_.reverse()
+      filter.reverse()
     }
 
-    const filterProducts = filter_.map((item) => {
+    const filterProducts = filter.map((item) => {
 
       return (
         <Products
           image={item.image}
           name={item.name}
           price={item.price}
-          addToCart={() => this.addToCart(item.id)} />
+          addToCart={() => this.addToCart(item)} />
       )
     }) 
     return (
@@ -189,7 +190,7 @@ class App extends React.Component {
             </Stock>
         </DisplayApp>
         <Cart
-          myCart={this.state.cart}
+          cart={this.state.cart}
           removeFromCart={this.removeFromCart}
         />
 
