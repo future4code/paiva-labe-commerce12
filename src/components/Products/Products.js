@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ProductCard } from './ProductCard'
 
 const ProductDisplay = styled.div`
   display: flex;
@@ -8,18 +7,19 @@ const ProductDisplay = styled.div`
   margin: auto;
 `
 const BlockStock = styled.div `
+  display:flex;
+  flex-direction: column;
+  align-items: center;
   border: 1px solid black;
   border-radius: 10px;
   margin: 40px;
-  padding: 20px;
+  flex-wrap: wrap;
 `
 
 const ImageStock = styled.img`
   border-radius: 10px;
-  min-width: 120px;
-  max-width: 120px;
-  min-height: 200px;
-  max-height: 200px;
+  width: 200px;
+  height:320px;
 `
 
 const ButtonAdd = styled.button `

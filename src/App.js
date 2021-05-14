@@ -6,13 +6,12 @@ import Cart from './components/ShoppCart/Cart'
 import img from './astronauta.jpg'
 import Filter from './components/Filters/Filter'
 
-
-
 const AppContainer = styled.div`
+  display:flex;
+  flex-direction: column;
   margin:0px;
   padding:0px;
-  height: 100%;
-  width: 100%;
+
 `
 
 const DisplayApp = styled.div`
@@ -23,7 +22,8 @@ const DisplayApp = styled.div`
 const Stock = styled.div`
   display: flex;
   flex-direction: row;
-  margin: auto;
+  justify-content:center;
+  flex-wrap: wrap;
 `
 
 const NavBar = styled.div`
@@ -31,10 +31,15 @@ const NavBar = styled.div`
   align-items: center;
   justify-content: center;
   background-image: url(${img});
-  width: 100%;
   height: 200px;
   color: white;
   text-shadow: 1px 5px 5px black;
+`
+const FilterBar = styled.div`
+  display:flex;
+  background-color: #133440;
+  height: 70px;
+  flex-wrap: wrap;
 `
 
 class App extends React.Component {
@@ -51,7 +56,7 @@ class App extends React.Component {
       {
         id: Math.random(),
         name: "Confort 101",
-        price: 7000,
+        price: 9000,
         image: "https://www.inovacaotecnologica.com.br/noticias/imagens/010130190521-roupa-espacial-para-marte-1.jpg",
         quantity: 0
       },
@@ -130,48 +135,57 @@ class App extends React.Component {
     this.setState({order: event.target.value})
   }
 
+  resetFilters=(event)=>{
+    this.setState({
+      search: "",
+      filterMin: 0,
+      filterMax: Infinity,
+    })
+
+  }
+
   render() {
-    const filter = this.state.products.filter((item) => {
-      if (((item.price >= this.state.filterMin || this.state.filterMin === '') &&
-        (item.price <= this.state.filterMax || this.state.filterMax === '') &&
-        (item.name.toLowerCase().includes(this.state.search.toLowerCase()) || this.state.search === ''))) {
-        return true
-      } else {
-        return false
+
+    const filter = this.state.products.filter(item =>{
+      return item.price >= this.state.filterMin && item.price <= this.state.filterMax && item.name.includes(this.state.search)
+    }).sort((a,b) =>{
+      if(this.state.order === "increasing"){
+        return a.price - b.price
+      }else if (this.state.order === "decreasing"){
+        return b.price - a.price
       }
     })
 
-    if (this.state.order === 'decreasing') {
-      filter.reverse()
-    }
-
-    const filterProducts = filter.map((item) => {
-
+    const filterProducts = filter.map((item)=>{
       return (
-        <Products
+            <Products
           image={item.image}
           name={item.name}
           price={item.price}
           addToCart={() => this.addToCart(item.id)} />
       )
     })
+
     return (
       <AppContainer>
         <DisplayApp>
           <NavBar>
-            <Filter
-            maxPrice={this.state.filterMax}
-            minPrice={this.state.filterMin}
-            findProduct={this.state.search}
-            onChangeFilterMax={this.onChangeFilterMax}
-            onChangeFilterMin={this.onChangeFilterMin}
-            onChangeFilterSearch={this.onChangeFilterSearch}
-            onChangeOrder={this.onChangeOrder}
-            />
           </NavBar>
+          <FilterBar>
+              <Filter
+              maxPrice={this.state.filterMax}
+              minPrice={this.state.filterMin}
+              findProduct={this.state.search}
+              onChangeFilterMax={this.onChangeFilterMax}
+              onChangeFilterMin={this.onChangeFilterMin}
+              onChangeFilterSearch={this.onChangeFilterSearch}
+              onChangeOrder={this.onChangeOrder}
+              resetFilters={this.resetFilters}
+              />
+            </FilterBar>
           <Stock>
             {filterProducts}
-            </Stock>
+          </Stock>
         </DisplayApp>
         <Cart
           myCart={this.state.myCart}
