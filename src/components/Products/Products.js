@@ -41,10 +41,8 @@ const ProductText = styled.div`
 `
 
 const ProductName = styled.p`
-
 `
 const ProductPrice = styled.p`
-
 `
 
 function Products(props) {
