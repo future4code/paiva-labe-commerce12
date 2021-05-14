@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import './App.css'
 import Products from './components/Products/Products'
 import Cart from './components/ShoppCart/Cart'
-import img from './astronauta.jpg'
+import img from './astronauta2.jpg'
 import Filter from './components/Filters/Filter'
 
 const AppContainer = styled.div`
@@ -11,7 +11,7 @@ const AppContainer = styled.div`
   flex-direction: column;
   margin:0px;
   padding:0px;
-
+  background-color: #e9e9e9;
 `
 const DisplayApp = styled.div`
   display: flex;
@@ -30,9 +30,12 @@ const NavBar = styled.div`
   align-items: center;
   justify-content: center;
   background-image: url(${img});
-  height: 200px;
+  height: 100vh;
   color: white;
   text-shadow: 1px 5px 5px black;
+  @media (max-width: 665px){
+        display:none;
+    }
 `
 const FilterBar = styled.div`
   display:flex;

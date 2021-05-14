@@ -8,6 +8,7 @@ const NavFilter = styled.div`
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
+    padding: 10px;
 
     @media (max-width: 665px){
         flex-direction: column;
@@ -28,11 +29,23 @@ const SelectSection = styled.div`
     display: flex;
     flex-direction: column;
 `
-const ButtonClear = styled.button`
-`
+
 const LabelText = styled.label`
     color:white;
     text-align: center;
+`
+const ButtonClear = styled.button `
+  width:60px;
+  height: 40px;
+  color: #ffffff;
+  background-color: #8f8f8f;
+  box-shadow: none;
+  border-color: white;
+  border-radius: 10px;
+  margin:30px;
+      :hover {
+    background: #061014;
+    } 
 `
 
 export default class Filter extends React.Component{

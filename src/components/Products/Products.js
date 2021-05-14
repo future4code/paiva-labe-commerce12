@@ -14,6 +14,8 @@ const BlockStock = styled.div `
   border-radius: 10px;
   margin: 40px;
   flex-wrap: wrap;
+  background-color: white;
+  padding: 10px;
 `
 
 const ImageStock = styled.img`
@@ -25,8 +27,8 @@ const ImageStock = styled.img`
 const ButtonAdd = styled.button `
   width:100%;
   height: 6vh;
-  color: #dfe6e9;
-  background-color: #2d3436;
+  color: #ffffff;
+  background-color: #8f8f8f;
   box-shadow: none;
   border-style: none;
   border-radius: 10px;
