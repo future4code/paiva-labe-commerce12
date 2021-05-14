@@ -9,10 +9,9 @@ const CartContainer = styled.div`
   margin: 10px;
   background-color: white;
   align-self: center;
-  width: 40%;
+  width: 50vw;
   display: flex;
   flex-direction: column;
-  
 `
 
 const ContainerL = styled.div`
