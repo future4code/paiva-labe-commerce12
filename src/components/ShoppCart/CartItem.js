@@ -11,16 +11,28 @@ const ContainerItems = styled.div`
     margin: 0;
   }
 `
+const ButtonRemove = styled.button `
+  width:100%;
+  height: 6vh;
+  color: #ffffff;
+  background-color: #8f8f8f;
+  box-shadow: none;
+  border-style: none;
+  border-radius: 10px;
+    :hover {
+    background: #133440;
+    } 
+`
 
   export class CartItem extends React.Component {
     render() {
       return <ContainerItems>
         <p>{this.props.ItemIn.quantity}</p>
         <p>{this.props.ItemIn.name}</p>
-        <button 
+        <ButtonRemove 
           onClick={() => this.props.removeFromCart(this.props.ItemIn.id)}>
-          -Remover Itens
-        </button>
+          Remover Itens
+        </ButtonRemove>
       </ContainerItems>
     }
   }
