@@ -13,7 +13,6 @@ const AppContainer = styled.div`
   padding:0px;
 
 `
-
 const DisplayApp = styled.div`
   display: flex;
   flex-direction: column;
@@ -38,7 +37,6 @@ const NavBar = styled.div`
 const FilterBar = styled.div`
   display:flex;
   background-color: #133440;
-  height: 70px;
   flex-wrap: wrap;
 `
 
@@ -82,43 +80,46 @@ class App extends React.Component {
     order: "increasing",
     search: ""
   }
-  //www.youtube.com/watch?v=FIiSRlyQf0c
-  //https://vimeo.com/410838254/6ea0a53200
-  //https://www.youtube.com/watch?v=liVSP7p47xI
-  //stackoverflow.com/questions/63471379/got-a-parsing-error-while-assign-a-value-on-my-state
+
   addToCart = (idProduct) => {
-    const cart = this.state.myCart.findIndex(
-      product => idProduct === product.id
-    );
-    if (cart >= 0) {
-      const newInCart = this.state.product.filter((product) => {
-        if (product.id === idProduct) {
-          return {
-            ...product,
-            quantity: product.quantity + 1
-          }
-        }
-        return product
+    console.log(idProduct)
+    const addToCart = [...this.state.myCart]
+    let i
+    for(i =0; i <addToCart.length; i++){
+      if(addToCart[i].id === idProduct){
+        addToCart[i].quantity += 1
+        break
+      }
+    }
+    if (i === addToCart.length){
+      const productFilter = this.state.products.filter((item) =>{
+        if (item.id === idProduct)
+        return true
       })
-     // this.setState({ myCart: newInCart }); // update o cart com o que foi add. no addToCart
-    //}else{
-  
-      //this.setState({myCart: newInCart)
-    } 
+      productFilter[0].quantity = 1
+      addToCart.push(productFilter[0])
+    }
+    this.setState({myCart: addToCart})
   }
 
   removeFromCart = (idProduct) => {
-    const addToCart = this.state.products.filter((product) => {
-      if (product.id === idProduct) {
-        return {
-          ...product,
-          quantity: product.quantity - 1
+    console.log(idProduct)
+    const removeCart = [...this.state.myCart]
+    const productId = removeCart.findIndex((item)=>{
+      return item.id === idProduct
+    })
+    for(let i = 0; i< removeCart.length; i++){
+      if(i === productId){
+        if(removeCart[i].quantity > 1){
+          removeCart[i].quantity -= 1
+        }else{
+          removeCart.splice(productId, 1)
         }
       }
-      return product
-    })
-    //this.setState({ tarefas: novaListaTarefas });
+    }
+    this.setState ({myCart: removeCart})
   }
+
   onChangeFilterMin=(event)=>{
     this.setState({filterMin: event.target.value})
   }

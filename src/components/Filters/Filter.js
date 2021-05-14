@@ -8,6 +8,11 @@ const NavFilter = styled.div`
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
+
+    @media (max-width: 665px){
+        flex-direction: column;
+    }
+
 `
 const NavPrice = styled.div`
     display:flex;
