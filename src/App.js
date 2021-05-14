@@ -27,13 +27,10 @@ const Stock = styled.div`
 
 const NavBar = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
   background-image: url(${img});
-  background-position: 100%;
   background-repeat: no-repeat;
-  height: 100vh;
-  width: 100vw;
+  background-size: cover;
+  height: 50vh;
   color: white;
   text-shadow: 1px 5px 5px black;
   @media (max-width: 665px){
