@@ -37,72 +37,87 @@ const NavBar = styled.div`
   text-shadow: 1px 5px 5px black;
 `
 
-class App extends React.Component {
-  state = {
-    products :[
-      {
-        id: Math.random(),
-        name: "Uniforme Cyberpunk",
-        price: 5600,
-        image: "https://mega.ibxk.com.br/2015/03/13/13142708050663.jpg",
-        quantity: 0
-    
-      },
-      {
-        id: Math.random(),
-        name: "Confort 101",
-        price: 7000,
-        image: "https://www.inovacaotecnologica.com.br/noticias/imagens/010130190521-roupa-espacial-para-marte-1.jpg",
-        quantity: 0
-      },
-      {
-        id: Math.random(),
-        name: "OITNB",
-        price: 8300,
-        image: "https://i.pinimg.com/736x/d9/45/21/d94521ee32233b8ad3a3befe7d85242a.jpg",
-        quantity: 2
-      },
-      {
-        id: Math.random(),
-        name: "Safety first",
-        price: 9600,
-        image: "https://w7.pngwing.com/pngs/205/871/png-transparent-person-wearing-astronaut-attire-astronaut-space-suit-extravehicular-activity-outer-space-health-astronaut-disease-space-weightlessness.png",
-        quantity: 1
-      }
-    ],
+const products = [
+  {
+    id: 1,
+    name: "Uniforme Cyberpunk",
+    price: 5600,
+    image: "https://mega.ibxk.com.br/2015/03/13/13142708050663.jpg"
+     },
+  {
+    id: 2,
+    name: "Confort 101",
+    price: 7000,
+    image: "https://www.inovacaotecnologica.com.br/noticias/imagens/010130190521-roupa-espacial-para-marte-1.jpg"
+    },
+  {
+    id: 3,
+    name: "OITNB",
+    price: 8300,
+    image: "https://i.pinimg.com/736x/d9/45/21/d94521ee32233b8ad3a3befe7d85242a.jpg"
+    },
+  {
+    id: 4,
+    name: "Safety first",
+    price: 9600,
+    image: "https://w7.pngwing.com/pngs/205/871/png-transparent-person-wearing-astronaut-attire-astronaut-space-suit-extravehicular-activity-outer-space-health-astronaut-disease-space-weightlessness.png"
+  }
+]
 
-    myCart: [],
+class App extends React.Component {
+
+  state = {
     filterMin: 0,
     filterMax: Infinity,
     order: "increasing",
-    search: ""
-  }
-  //www.youtube.com/watch?v=FIiSRlyQf0c
+    search: "",  
+    cart :[
+      {
+        id: 1,
+        name: "Uniforme Cyberpunk",
+        price: 5600,
+        image: "https://mega.ibxk.com.br/2015/03/13/13142708050663.jpg"
+         }        
+      ]
+    }                       
+                   
+   //www.youtube.com/watch?v=FIiSRlyQf0c
   //https://vimeo.com/410838254/6ea0a53200
   //https://www.youtube.com/watch?v=liVSP7p47xI
   //stackoverflow.com/questions/63471379/got-a-parsing-error-while-assign-a-value-on-my-state
-  addToCart = (idProduct) => {
-    const cart = this.state.myCart.findIndex(
-      product => idProduct === product.id
-    );
-    if (cart >= 0) {
-      const newInCart = this.state.product.filter((product) => {
-        if (product.id === idProduct) {
-          return {
-            ...product,
-            quantity: product.quantity + 1
-          }
-        }
-        return product
-      })
-     // this.setState({ myCart: newInCart }); // update o cart com o que foi add. no addToCart
-    //}else{
   
-      //this.setState({myCart: newInCart)
-    } 
-  }
+  addToCart = (product) => {
+    const existProductIndex = this.state.cart.findIndex(p => p.id === product.id);
+  
+    if (existProductIndex > 0) {
 
-  removeFromCart = (idProduct) => {
+        const cartProducts = this.state.cart.slice();
+
+        const existProduct = cartProducts[existProductIndex];
+       
+        const updateQuantityProducts = {
+        ...existProduct,
+        quantity: existProduct.quantity + product.quantity
+
+       };
+
+       cartProducts[existProductIndex] = updateQuantityProducts;
+       
+       this.setState({
+            cart: cartProducts
+       });
+
+      } else {
+         this.setState({
+         cart: [...this.state.cart, product]
+
+         });
+      }
+       
+    }
+
+ 
+ removeFromCart = (idProduct) => {
     const addToCart = this.state.products.filter((product) => {
       if (product.id === idProduct) {
         return {
@@ -131,7 +146,7 @@ class App extends React.Component {
   }
 
   render() {
-    const filter = this.state.products.filter((item) => {
+   const filter_ = this.state.products.filter((item) => {
       if (((item.price >= this.state.filterMin || this.state.filterMin === '') &&
         (item.price <= this.state.filterMax || this.state.filterMax === '') &&
         (item.name.toLowerCase().includes(this.state.search.toLowerCase()) || this.state.search === ''))) {
@@ -142,10 +157,10 @@ class App extends React.Component {
     })
 
     if (this.state.order === 'decreasing') {
-      filter.reverse()
+      filter_.reverse()
     }
 
-    const filterProducts = filter.map((item) => {
+    const filterProducts = filter_.map((item) => {
 
       return (
         <Products
@@ -154,7 +169,7 @@ class App extends React.Component {
           price={item.price}
           addToCart={() => this.addToCart(item.id)} />
       )
-    })
+    }) 
     return (
       <AppContainer>
         <DisplayApp>
@@ -174,13 +189,12 @@ class App extends React.Component {
             </Stock>
         </DisplayApp>
         <Cart
-          myCart={this.state.myCart}
+          myCart={this.state.cart}
           removeFromCart={this.removeFromCart}
         />
 
       </AppContainer>
     )
-
   }
 }
 
