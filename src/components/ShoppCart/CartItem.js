@@ -6,13 +6,14 @@ const ContainerItems = styled.div`
   grid-auto-flow: column;
   gap: 4px;
   align-items: center;
+  justify-content: space-between;
 
   p {
     margin: 0;
   }
 `
 const ButtonRemove = styled.button `
-  width:100%;
+  width:120px;
   height: 6vh;
   color: #ffffff;
   background-color: #8f8f8f;

@@ -25,7 +25,7 @@ const ImageStock = styled.img`
 `
 
 const ButtonAdd = styled.button `
-  width:100%;
+  width: 100%;
   height: 6vh;
   color: #ffffff;
   background-color: #8f8f8f;
