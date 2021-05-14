@@ -34,7 +34,7 @@ class ShoppCart extends React.Component {
         {this.props.cart.map((product) => { // vai mapear uma const que se encontra em home??
           
     return <CartItem 
-    cartItem={product} 
+    CartItem={product} 
     removeFromCart ={this.props.removeFromCart}// recebe a funcao de App.js 
        />
         }

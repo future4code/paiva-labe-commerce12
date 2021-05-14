@@ -12,7 +12,7 @@ const ContainerItems = styled.div`
   }
 `
 
-class CartItem extends React.Component {
+export class CartItem extends React.Component {
   render() {
     return <ContainerItems>
       <p>{this.props.CartItem.quantity}</p>
@@ -25,4 +25,4 @@ class CartItem extends React.Component {
   }
 }
 
-export default CartItem  
+
