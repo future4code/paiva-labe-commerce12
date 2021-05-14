@@ -5,7 +5,7 @@ todas as funcionalidades estão funcionando de acordo com o solicitado no projet
 
 
 ### Link Surge 
-http://flimsy-worm.surge.sh/
+http://hungry-thumb.surge.sh/
 
 ### Imagens
 ![image](https://user-images.githubusercontent.com/81251676/118319545-4d1f6600-b4d1-11eb-978e-736da995b5ab.png)
