@@ -22,7 +22,7 @@ class ShoppCart extends React.Component {
     let totalValue = 0 //O valor deve ser 0 no campo do valor total
     // for(let x of this.props.y) { soma += (a*b) } //https://pt.stackoverflow.com/questions/90841/somar-array-javascript/90842#90842
     for(let product of this.props.cart) {
-    totalValue += (product.quantity * product.price)
+    totalValue += product.quantity * product.price
     }
     return totalValue
   }
