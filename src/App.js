@@ -38,6 +38,7 @@ const FilterBar = styled.div`
   display:flex;
   background-color: #133440;
   flex-wrap: wrap;
+  padding-bottom:10px;
 `
 
 class App extends React.Component {
