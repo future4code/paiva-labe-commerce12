@@ -12,17 +12,16 @@ const ContainerItems = styled.div`
   }
 `
 
-export class CartItem extends React.Component {
-  render() {
-    return <ContainerItems>
-      <p>{this.props.CartItem.quantity}</p>
-      <p>{this.props.CartItem.name}</p>
-      <button 
-        onClick={() => this.props.removeFromCart(this.props.CartItem.id)}>
-        -Remover Itens
-      </button>
-    </ContainerItems>
+  export class CartItem extends React.Component {
+    render() {
+      return <ContainerItems>
+        <p>{this.props.ItemIn.quantity}</p>
+        <p>{this.props.ItemIn.name}</p>
+        <button 
+          onClick={() => this.props.removeFromCart(this.props.ItemIn.id)}>
+          -Remover Itens
+        </button>
+      </ContainerItems>
+    }
   }
-}
-
-
+  

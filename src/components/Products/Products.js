@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ProductCard } from './ProductCard'
 
 const ProductDisplay = styled.div`
   display: flex;
@@ -8,18 +7,19 @@ const ProductDisplay = styled.div`
   margin: auto;
 `
 const BlockStock = styled.div `
+  display:flex;
+  flex-direction: column;
+  align-items: center;
   border: 1px solid black;
   border-radius: 10px;
   margin: 40px;
-  padding: 20px;
+  flex-wrap: wrap;
 `
 
 const ImageStock = styled.img`
   border-radius: 10px;
-  min-width: 120px;
-  max-width: 120px;
-  min-height: 200px;
-  max-height: 200px;
+  width: 200px;
+  height:320px;
 `
 
 const ButtonAdd = styled.button `
@@ -41,8 +41,10 @@ const ProductText = styled.div`
 `
 
 const ProductName = styled.p`
+
 `
 const ProductPrice = styled.p`
+
 `
 
 function Products(props) {
@@ -54,7 +56,7 @@ function Products(props) {
           <ProductName>{props.name}</ProductName>
           <ProductPrice>R${props.price},00</ProductPrice>
         </ProductText>
-        <ButtonAdd onClick={() =>this.props.addToCart(props)}>Adicionar</ButtonAdd>
+        <ButtonAdd onClick={() => props.addToCart(props.id)}>Adicionar</ButtonAdd>
       </BlockStock>
     )
   }
