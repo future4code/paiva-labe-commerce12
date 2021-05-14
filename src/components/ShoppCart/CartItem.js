@@ -13,7 +13,7 @@ const ContainerItems = styled.div`
   }
 `
 const ButtonRemove = styled.button `
-  width:120px;
+  width: 100%;
   height: 6vh;
   color: #ffffff;
   background-color: #8f8f8f;
