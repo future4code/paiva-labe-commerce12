@@ -179,6 +179,17 @@ class App extends React.Component {
     search: ""
   }
 
+  componentDidUpdate(){
+    localStorage.setItem("cart", JSON.stringify(this.state.myCart))
+  }
+
+  componentDidMount(){
+    if (localStorage.getItem("cart")){
+      const cartSavedString = localStorage.getItem("cart")
+      this.setState({myCart: JSON.parse(cartSavedString)})
+    }
+  }
+
   addToCart = (idProduct) => {
     const addToCart = [...this.state.myCart]
     let i
