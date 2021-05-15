@@ -10,12 +10,18 @@ const BlockStock = styled.div `
   display:flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 10px;
   margin: 40px;
   flex-wrap: wrap;
-  background-color: white;
+  background-color: #1C1F22;
+  color: white;
   padding: 10px;
+  &:hover{
+        transform:scale(1.05);
+        -webkit-box-shadow: 0px 10px 13px -7px #08f, 5px 5px 15px 5px rgba(0,0,0,0); 
+        box-shadow: 0px 10px 13px -7px #08f, 5px 5px 15px 5px rgba(0,0,0,0);
+    }
 `
 
 const ImageStock = styled.img`
@@ -33,7 +39,7 @@ const ButtonAdd = styled.button `
   border-style: none;
   border-radius: 10px;
     :hover {
-    background: #133440;
+    background: #08f;
     } 
 `
 const ProductText = styled.div`
