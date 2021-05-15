@@ -13,7 +13,7 @@ const ContainerItems = styled.div`
   }
 `
 const ButtonRemove = styled.button `
-  width: 100%;
+  /* width: 100%; */
   height: 6vh;
   color: #ffffff;
   background-color: #8f8f8f;
@@ -21,7 +21,8 @@ const ButtonRemove = styled.button `
   border-style: none;
   border-radius: 10px;
     :hover {
-    background: #133440;
+      background: #08f;
+      transform:scale(1.05);
     } 
 `
 

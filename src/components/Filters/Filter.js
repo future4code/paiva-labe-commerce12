@@ -11,6 +11,8 @@ const NavFilter = styled.div`
     padding: 10px;
 
     @media (max-width: 665px){
+        margin: auto;
+        display: flex;
         flex-direction: column;
     }
 
@@ -21,9 +23,17 @@ const NavPrice = styled.div`
 `
 const InputDisplay = styled.input`
     display:flex;
+    @media (max-width: 340px){
+        width:80%
+    }
+    @media (max-width: 665px){
+        margin-top: 10px;
+    }
 `
 const SelectDisplay = styled.select`
     display: flex;
+    
+    
 `
 const SelectSection = styled.div`
     display: flex;
@@ -33,7 +43,14 @@ const SelectSection = styled.div`
 const LabelText = styled.label`
     color:white;
     text-align: center;
+    @media (max-width: 665px){
+        margin-top: 10px;
+    }
 `
+const DivButton = styled.div`
+    display: flex;
+`
+
 const ButtonClear = styled.button `
   width:60px;
   height: 40px;
@@ -42,10 +59,13 @@ const ButtonClear = styled.button `
   box-shadow: none;
   border-color: white;
   border-radius: 10px;
-  margin:30px;
       :hover {
     background: #061014;
-    } 
+    }
+    @media (max-width: 665px){
+        margin-top: 10px;
+    }
+
 `
 
 export default class Filter extends React.Component{
@@ -64,9 +84,7 @@ export default class Filter extends React.Component{
                     <option value="decreasing">Decrescente</option>
                 </SelectDisplay>
             </SelectSection>
-            <div>
                 <ButtonClear onClick={this.props.resetFilters}>Limpar<br/>Filtros</ButtonClear>
-            </div>
         </NavFilter>
         )
     }
