@@ -8,7 +8,7 @@ todas as funcionalidades estão funcionando de acordo com o solicitado no projet
 
 
 ### Link Surge 
-http://nne-commerce.surge.sh/
+http://nncommerce.surge.sh/
 
 ### Imagens
 ![Capturar_select-area_20210515145733](https://user-images.githubusercontent.com/37752868/118373727-aac5b800-b58e-11eb-927a-afa9e8caf4bf.png)
